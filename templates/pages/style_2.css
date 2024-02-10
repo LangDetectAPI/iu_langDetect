@@ -1,0 +1,33 @@
+/* Ajoutez ces styles à votre fichier CSS existant ou créez-en un nouveau pour la deuxième page */
+
+.textOutput {
+    background-color: #add8e6;
+    color: #000;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.resultDisplay {
+    border: 1px solid #000;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.buttonGroup button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttonGroup button:hover {
+    background-color: #0056b3;
+}
+
+.buttonGroup {
+    text-align: center;
+}
