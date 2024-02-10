@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+    <div id="textOutput" class="textOutput">Zone de texte (non modifiable)</div>
+    <div id="resultDisplay" class="resultDisplay">Résultat : TEXTE NON MODIFIABLE</div>
+    
+    <label for="correctionInput">Pourriez-vous corriger</label>
+    <textarea id="correctionInput" placeholder="Zone de saisie"></textarea>
+    
+    <button id="submitButton">envoyer</button>
+    <button id="resetButton">reset</button>
+</div>
+
+<script src="feedbackScript.js"></script>
+</body>
+</html>
