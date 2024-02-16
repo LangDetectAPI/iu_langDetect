@@ -50,18 +50,18 @@ def call_api(text):
         }
     """
     # call the API
-    url = 'https://apicoc.com/detect'
-    json = {'text': text}
-    response = requests.post(url=url, json=json)
+    #url = 'https://apicoc.com/detect'
+    #json = {'text': text}
+    #response = requests.post(url=url, json=json)
 
     # check if the response is 200
-    if response.status_code != 200:
-        return 'Une erreur est survenue'
+    #if response.status_code != 200:
+    #    return 'Une erreur est survenue'
 
     # get the response
-    payload = response.json()
+    #payload = response.json()
 
-    return build_response(payload)
+    return build_response(text)
 
 
 if __name__ == '__main__':
