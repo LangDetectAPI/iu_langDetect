@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# copy the content of the local src directory to the working directory
+# copy the content of the local api directory to the working directory
 COPY . .
 
 EXPOSE 5000
