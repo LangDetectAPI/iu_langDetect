@@ -1,4 +1,3 @@
-
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -6,6 +5,17 @@ from flask import request
 from api import Client
 
 app = Flask(__name__)
+
+
+def build_response(payload: dict):
+    """ Build the response"""
+
+    print("message:", payload)
+
+    lang = payload.get('lang', None)
+    proba = payload.get('proba', None)
+
+    return f'<b>La langue detectée :</b> {lang} <br> <b>score :</b> {proba}'
 
 
 @app.route('/')
@@ -22,8 +32,9 @@ def prompt():
     # check if the text is empty
     if text is None or text.strip() == '':
         return 'Veuillez entrer un texte'
+    payload = Client().call_detect(text)
 
-    return Client().call_detect(text)
+    return build_response(payload)
 
 
 if __name__ == '__main__':

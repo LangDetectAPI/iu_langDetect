@@ -28,15 +28,6 @@ class Client:
         # get the response
         payload = response.json()
 
-        return Client._build_response(payload)
+        return payload
 
-    @staticmethod
-    def _build_response(payload: dict):
-        """ Build the response"""
 
-        print("message:", payload)
-
-        lang = payload.get('lang', None)
-        proba = payload.get('proba', None)
-
-        return f'<b>La langue detectée :</b> {lang} <br> <b>score :</b> {proba}'
