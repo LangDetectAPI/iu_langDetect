@@ -26,7 +26,7 @@ def prompt():
     return call_api(text)
 
 
-def build_response(payload):
+def build_response(payload: dict):
     """ Build the response
 
     Args:
@@ -37,9 +37,11 @@ def build_response(payload):
     """
 
     print("message:", payload)
-    list_lang = ['fr', 'en', 'es', 'de', 'it', 'pt', 'nl', 'pl', 'ru', 'ja', 'zh', 'ar']
-    lang = random.choice(list_lang)
-    return f'<b>La langue detectée est :</b> {lang}'
+
+    lang = payload.get('lang', None)
+    proba = payload.get('proba', None)
+
+    return f'<b>La langue detectée :</b> {lang} <br> <b>score :</b> {proba}'
 
 
 def call_api(text):
@@ -50,22 +52,22 @@ def call_api(text):
         }
     """
     # call the API
-    #url = 'https://apicoc.com/detect'
-    #json = {'text': text}
-    #response = requests.post(url=url, json=json)
+    url = 'http://127.0.0.1:8080/detect'
+    json = {'text': text}
+    response = requests.post(url=url, json=json)
 
     # check if the response is 200
-    #if response.status_code != 200:
-    #    return 'Une erreur est survenue'
+    if response.status_code != 200:
+        return 'Une erreur est survenue'
 
     # get the response
-    #payload = response.json()
+    payload = response.json()
 
-    return build_response(text)
+    return build_response(payload)
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=5000)
+    app.run(debug=True, port=5002)
 
 # Run the app
 # $ python app.py
