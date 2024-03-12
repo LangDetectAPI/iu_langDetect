@@ -1,12 +1,14 @@
 from pathlib import Path
-from typing import Dict
-
+from typing import Dict, Any
+import json
 import requests
 
 
 class Client:
 
     def __init__(self):
+
+        # get the url from the config file
         self._url = Client._get_config()["url"]
 
     @staticmethod
@@ -29,5 +31,10 @@ class Client:
         payload = response.json()
 
         return payload
+    
+
+if __name__ == "__main__":
+    client = Client()
+    #print(client.call_detect("Bonjour, je suis un texte"))
 
 
