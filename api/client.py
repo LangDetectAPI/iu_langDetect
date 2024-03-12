@@ -9,7 +9,11 @@ class Client:
     def __init__(self):
 
         # get the url from the config file
-        self._url = Client._get_config()["url"]
+        config = Client._get_config()
+        print(config)
+        
+        self._url = config["host"] + ":" + config["port"] + config["endpoint"]
+        print(self._url)
 
     @staticmethod
     def _get_config() -> Dict[str, Any]:
