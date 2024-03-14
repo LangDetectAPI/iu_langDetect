@@ -1,27 +1,24 @@
+# image de base
 FROM python:3.10-slim
-LABEL authors="amina"
 
-# work directory
+# le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# copy the requirements file
+# Copier le fichier des exigences dans le conteneur
 COPY requirements.txt .
 
-# install the requirements
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+# Installer les dépendances
+RUN pip install --no-cache-dir -r requirements.txt
 
-# copy the content of the local api directory to the working directory
+#Copier le reste des fichiers du projet dans le conteneur
 COPY . .
 
-EXPOSE 5000
+# Exposer le port sur lequel l'application Flask s'exécute
+EXPOSE 5002
 
-#Flask environment variables
+#Définir la variable d'environnement pour Flask
 ENV FLASK_APP=app.py
-ENV FLASK_ENV=development
+ENV FLASK_RUN_HOST=0.0.0.0
 
-# command to run on container start
-CMD ["flask", "run", "--host=0.0.0.0"]
-
-
-
+# Lancer l'application Flask
+CMD ["flask", "run", "--port=5002"]
